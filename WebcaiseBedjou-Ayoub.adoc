@@ -243,4 +243,99 @@ END;
 
 == Mission 2 : Fidélisation des consommateurs et Robustesse
 
-    
+=== Question 2.1 – Requêtes SQL
+
+a) Liste des consommateurs ayant effectué au moins une vente en 2017
+
+[source,sql]
+----
+SELECT DISTINCT nom, prenom, mail
+FROM Conso
+JOIN Vente ON Vente.idConso = Conso.id
+WHERE YEAR(dateVente) = 2017;
+----
+
+b) Nombre de consommateurs fidélisés appartenant à la tranche d’âge 18-30 ans
+
+[source,sql]
+----
+SELECT COUNT(*)
+FROM ConsoFidele
+WHERE TIMESTAMPDIFF(YEAR, dateNaiss, CURDATE()) BETWEEN 18 AND 30;
+----
+
+c) Liste des consommateurs avec le montant total des ventes réalisées
+
+[source,sql]
+----
+SELECT nom, prenom, SUM(montantVente) AS totalVentes
+FROM Conso
+JOIN Vente ON Vente.idConso = Conso.id
+GROUP BY Conso.id, nom, prenom;
+----
+
+=== Question 2.2 – Analyse de vulnérabilité
+
+La variable seuilVentes provient directement de la saisie de l’utilisateur
+dans l’interface JavaFX et est utilisée dans la construction de la requête SQL
+par concaténation de chaînes de caractères.
+
+Cette pratique expose l’application à une vulnérabilité de type
+*Injection SQL*, qui fait partie des failles majeures du classement OWASP.
+
+En effet, un utilisateur malveillant pourrait saisir une valeur contenant
+du code SQL afin de modifier le comportement de la requête.
+Par exemple, la saisie d’une valeur telle que :
+
+0 OR 1=1
+
+rendrait la condition de la clause HAVING toujours vraie et pourrait permettre
+d’accéder à des données non autorisées.
+
+Dans des cas plus graves, un attaquant pourrait tenter d’exécuter
+des commandes SQL supplémentaires afin de modifier ou supprimer
+des données de la base.
+
+Cette vulnérabilité est due à l’utilisation de la concaténation de chaînes
+pour construire la requête SQL.
+
+Les bonnes pratiques de sécurité recommandées par l’OWASP consistent
+à utiliser des requêtes paramétrées (PreparedStatement) afin de séparer
+le code SQL des données fournies par l’utilisateur et éviter ainsi
+les attaques par injection SQL.
+
+=== Question 2.3 – Sécurisation de l’accès à la base avec PreparedStatement
+
+Afin d’éviter les attaques par injection SQL, la requête doit être
+écrite en utilisant une requête paramétrée avec l’interface
+PreparedStatement de JDBC.
+
+La valeur saisie par l’utilisateur n’est plus concaténée directement
+dans la requête SQL mais remplacée par un paramètre "?".
+La valeur est ensuite transmise séparément via la méthode setInt().
+
+[source,sql]
+----
+SELECT nom, prenom, tel, mail
+FROM Conso
+JOIN Vente ON idConso = Conso.id
+GROUP BY Conso.id
+HAVING COUNT(*) > ?
+----
+
+[source,java]
+----
+String requete =
+"SELECT nom, prenom, tel, mail " +
+"FROM Conso " +
+"JOIN Vente ON idConso = Conso.id " +
+"GROUP BY Conso.id " +
+"HAVING COUNT(*) > ?";
+
+PreparedStatement pstmt = dbConnect.prepareStatement(requete);
+
+pstmt.setInt(1, seuilVentes);
+
+ResultSet res = pstmt.executeQuery();
+----
+
