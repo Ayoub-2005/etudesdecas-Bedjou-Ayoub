@@ -1,0 +1,22 @@
+= TP Étude de Cas : Coopain
+:author: Professeur Agrégé d'Informatique
+:revnumber: 1.0
+:toc: left
+:toc-title: Sommaire
+:icons: font
+:description: Préparation à l'E5 - BTS SIO SLAM 2ème année
+
+
+== Mission 1 – Gestion des demandes d'insémination
+
+**Question 1.1 :** Déduire de la requête SQL fournie dans le dossier documentaire (**Document 2**), la règle de gestion utilisée par Coopain pour choisir une paillette lors d'une demande d'insémination.
+
+**Réponse :**
+
+la règle de gestion utilisée par Coopain permet d’utiliser en priorité les paillettes issues des Taureau  les plus anciennes afin d’assurer une bonne gestion du stock.
+
+***
+
+**Question 1.2 :** Indiquer pour chaque information à imprimer sur une paillette (**Document 3**), la ou les données nécessaires en précisant pour chacune d'où elle provient dans le schéma existant et si elle nécessite une transformation.
+
+**Réponse :**
