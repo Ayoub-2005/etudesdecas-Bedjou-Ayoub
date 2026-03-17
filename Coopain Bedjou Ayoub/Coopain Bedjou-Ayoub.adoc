@@ -47,9 +47,10 @@ non le Nom du taureau n’est pas transformé et provient de la table Taureau et
 [source,sql]
 ----
 SELECT libelle, prixPaillette
-FROM TypePaillette, Tarif
-WHERE Tarif.idTypePaillette = TypePaillette.id
-AND idNationalTaureau = 'FR0103015562';
+FROM TypePaillette
+INNER JOIN Tarif
+ON Tarif.idTypePaillette = TypePaillette.id
+WHERE idNationalTaureau = 'FR0103015562';
 ----
 
 ***
@@ -60,15 +61,16 @@ AND idNationalTaureau = 'FR0103015562';
 
 [source,sql]
 ----
-SELECT idNational, nom,
-(
-    SELECT SUM(stockRestant)
-    FROM Lot
-    WHERE Lot.idNationalTaureau = Taureau.idNational
-) AS stockTotal
-FROM Taureau
+SELECT
+T.idNational,
+T.nom,
+SUM(L.stockRestant) AS stockTotal
+FROM Taureau T
+LEFT JOIN Lot L ON T.idNational = L.idNationalTaureau
+GROUP BY T.idNational, T.nom
 ORDER BY stockTotal ASC;
 ----
-
 ***
+
+
 
