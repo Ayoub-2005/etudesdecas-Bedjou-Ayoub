@@ -1,0 +1,74 @@
+= Correction Personnalisée - TP Étude de Cas Coopain
+:author: Correction pour M. Bedjou
+:toc: left
+:toc-title: Sommaire
+:icons: font
+
+Bonjour M. Bedjou.
+
+Le travail fourni sur le début de l'étude de cas Coopain présente des éléments corrects en requêtage SQL et en analyse de données. Cependant, le rendu est lourdement incomplet : la copie s'arrête à la question 1.4. La fin de la Mission 1, la Mission 2, la Mission 3 (Java/POO), les prototypes (Missions 4 et 5) et les questions de synthèse sont totalement absents.
+
+**Rappel impératif :** L'ensemble de vos réponses, ainsi que les nombreuses parties manquantes que vous devrez obligatoirement traiter, devront faire l'objet d'une validation orale stricte avec M. Robert. Cette étape est indispensable pour valider vos acquis.
+
+Voici le détail factuel de la correction sur la portion rendue.
+
+---
+
+== Mission 1 : Gestion des demandes d'insémination
+
+=== Question 1.1 — Règle de gestion
+**Votre réponse :** Utiliser en priorité les paillettes issues des taureaux les plus anciennes.
+
+[WARNING]
+.Remarque - Imprécision
+====
+L'idée générale est là (logique d'ancienneté), mais l'analyse de la requête est imprécise. Ce ne sont pas les taureaux qui sont anciens, mais le **lot** de paillettes (règle du Premier Entré, Premier Sort - FIFO). De plus, vous avez omis de mentionner la condition de stock (`stockRestant >= 1`) visible dans la requête.
+====
+
+=== Question 1.2 — Provenance des informations
+**Votre réponse :** Liste textuelle détaillant les sources et les transformations nécessaires.
+
+[NOTE]
+.Évaluation - Conforme
+====
+L'analyse du dictionnaire des données est correcte. Les données nécessitant un calcul ou une extraction (Date de collecte, Code-barres, Quantième) sont bien identifiées.
+====
+
+=== Questions 1.3 et 1.4 — Requêtes SQL (Tarifs et Stocks)
+**Votre réponse :** Requêtes avec `INNER JOIN` et `LEFT JOIN`, accompagnées de fonctions d'agrégation.
+
+[NOTE]
+.Évaluation - Validé
+====
+Les syntaxes SQL sont correctes et répondent au besoin.
+Pour la question 1.4, l'utilisation d'un `LEFT JOIN` au lieu d'un simple `JOIN` est une approche rigoureuse : cela permet d'afficher même les taureaux dont le stock est à zéro. C'est une bonne pratique, à reproduire en Edc BTS.
+====
+
+---
+
+== Missions Manquantes
+
+[WARNING]
+.Erreur - Travail non rendu
+====
+L'intégralité des sections suivantes est absente de votre document :
+* **Question 1.5 :** Modèle relationnel.
+* **Mission 2 :** Scénarios d'erreurs, création de base SQLite et audit de cybersécurité (DICP / OWASP).
+* **Mission 3 :** Programmation Orientée Objet (Java), Tests Unitaires (JUnit) et sécurité réseau (Man-in-the-Middle).
+* **Questions de synthèse :** Les 10 points théoriques sur la mobilité, l'ORM, etc.
+====
+
+== Conclusion
+
+Note estimée : **non noté**
+
+Le travail rendu est beaucoup trop court pour évaluer les compétences attendues sur ce TP. Les quelques requêtes SQL rédigées sont justes, mais cela reste insuffisant.
+
+**Attention: si vous faites l'équivalent le jour du BTS votre note sera très mauvaise **
+
+Pour espérer valider cette évaluation, vous devez impérativement :
+- Traiter et rendre les parties manquantes (Modélisation, SQL/SQLite, POO Java et Synthèse).
+- Présenter plus tôt le fonctionnement de votre prototype (JavaFX / Hibernate) pour les missions 4 et 5 ainsi que les tests unitaires.
+- Contacter M. Robert pour passer l'entretien oral obligatoire de vérification sur ce rendu et sur la suite de votre travail.
+
+Pour la prochain étude de cas, je ferai les premières questions avec vous pour vous mettre le pied à l'étrier
