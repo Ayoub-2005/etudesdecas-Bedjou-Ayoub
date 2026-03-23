@@ -1,0 +1,31 @@
+= BTS SERVICES INFORMATIQUES AUX ORGANISATIONS
+:session: 2019
+:epreuve: E5 : Production et fourniture de services informatiques
+:duree: 4h00
+:coefficient: 5
+:cas: Restiloc
+:imagesdir: images
+
+
+== Mission 1 – Gestion des prestations de remise en état (PREE)
+
+**Question 1.1 :** Proposer une modification de la structure de la base de données pour intégrer la gestion des PREE ( diagramme de classes ou schéma relationnel).
+
+**Réponse :**
+
+image::Shéma relationel.png[Diagramme de classes]
+
+
+
+== Mission 2 – Gestion des rendez-vous
+
+**Question 2.1 :** Justifier le choix d’utiliser une classe abstraite pour la classe Expertise.
+
+**Réponse :**
+
+La classe Expertise est abstraite car elle représente un concept général qui ne doit pas être instancié directement.
+Elle permet de regrouper les attributs et méthodes communs aux différents types d’expertises (rendez-vous client et pool garage).
+Les classes filles spécialisées héritent de cette classe et implémentent leurs spécificités.
+
+
+
