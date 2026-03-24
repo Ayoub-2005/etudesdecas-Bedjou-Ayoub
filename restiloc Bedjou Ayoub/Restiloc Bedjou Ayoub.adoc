@@ -23,9 +23,79 @@ image::Shéma relationel.png[Diagramme de classes]
 
 **Réponse :**
 
-La classe Expertise est abstraite car elle représente un concept général qui ne doit pas être instancié directement.
-Elle permet de regrouper les attributs et méthodes communs aux différents types d’expertises (rendez-vous client et pool garage).
-Les classes filles spécialisées héritent de cette classe et implémentent leurs spécificités.
+
+**Question 2.2 :** Écrire la méthode `AjouterExpertisePool` de la classe `SocieteFinancement`.
+
+**Réponse :**
 
 
+[source,csharp]
+----
+public void AjouterExpertisePool (string dossier, DateTime dateHeure, string lieu, string adresse, string immat, string marque, string modele) {
 
+    }
+
+----
+
+**Question 2.3 :** Écrire la méthode `GetMotif` de la classe `Indisponibilite`.
+
+**Réponse :**
+
+[source,csharp]
+----
+public string GetMotif() {
+    return motif;
+}
+----
+
+**Question 2.4 :** Écrire la méthode `LesExpertisesIndispos` de la classe `SocieteFinancement`.
+
+**Réponse :**
+
+[source,csharp]
+----
+public List<Expertise> LesExpertisesIndispos () {
+        // À compléter
+    }
+
+----
+
+**Question 2.5 :** Écrire la méthode `NbIndisponibilites` qui retourne le nombre d’expertises indisponibles correspondant au motif passé en paramètre.
+
+**Réponse :**
+
+[source,csharp]
+----
+public int NbIndisponibilites(string leMotif) {
+        // À compléter
+    }
+
+
+----
+
+
+== Mission 3 – Application mobile pour les experts
+
+**Question 3.1 :** Écrire en langage SQL les requêtes permettant d'obtenir :
+
+1) Liste des informations date, heure, immatriculation, marque, modèle, expert)
+
+**Réponse :**
+[source,sql]
+----
+SELECT
+    M.dateMission,
+    M.heureDebut,
+    M.immatriculation,
+    V.marque,
+    V.modele,
+    E.nom
+FROM MissionExpertise M
+JOIN Expert E ON M.idExpert = E.idExpert
+JOIN VehiculeExpertise V ON M.idMission = V.idMission
+ORDER BY M.dateMission ASC, M.heureDebut ASC;
+----
+
+2) Nombre de véhicules expertisés en 2018 pour chaque expert.
+
+**Réponse :**
