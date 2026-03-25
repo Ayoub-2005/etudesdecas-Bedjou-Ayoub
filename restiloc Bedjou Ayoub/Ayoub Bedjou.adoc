@@ -1,0 +1,70 @@
+= Correction Personnalisée - TP Étude de Cas RestiLoc
+:author: Correction pour M. Ayoub Bedjou
+:toc: left
+:toc-title: Sommaire
+:icons: font
+
+Bonjour M. Bedjou.
+
+Le travail fourni sur l'étude de cas RestiLoc est très largement incomplet. En dehors d'une requête SQL et d'un accesseur basique, l'intégralité du code métier (C#), de l'analyse d'architecture, de l'audit de cybersécurité et des questions de synthèse est manquante.
+
+**Rappel impératif :** Ce rendu ne permet pas d'évaluer correctement vos compétences techniques. Vous devez impérativement tn faire davantage !
+
+Voici le détail factuel de votre évaluation.
+
+---
+
+== Mission 1 : Modélisation des prestations (PREE)
+
+**Votre réponse :** Insertion d'une image (`Shéma relationel.png`).
+
+Ok vu ensemble
+
+== Mission 2 : Gestion des rendez-vous (C#)
+
+**Vos réponses :** Seul le getter `GetMotif` a été traité. Tout le reste est laissé vide ou en commentaire (`// À compléter`).
+
+[WARNING]
+.Erreur - Travail non rendu
+====
+* Vous n'avez pas justifié techniquement l'utilisation de la classe abstraite `Expertise`.
+* La logique algorithmique est absente : les méthodes d'instanciation (`AjouterExpertisePool`), de filtrage de liste (`LesExpertisesIndispos`) et de comptage (`NbIndisponibilites`) n'ont pas été codées. C'est une lacune critique concernant vos compétences en Programmation Orientée Objet (manipulation de `List`, boucles `foreach`, et conditions).
+====
+
+== Mission 3 : Application et Architecture
+
+**Vos réponses :** Requête SQL 1 rédigée. Le document s'arrête brutalement à la question 2.
+
+[NOTE]
+.Évaluation - SQL Validé
+====
+Votre première requête d'extraction est correcte. Les jointures (`JOIN`) reliant les tables `MissionExpertise`, `Expert` et `VehiculeExpertise` sont exactes, et le tri chronologique (`ORDER BY ASC`) est bien respecté.
+====
+
+[WARNING]
+.Erreur - Travail inachevé
+====
+* Les requêtes SQL 2 (Agrégation/`COUNT`) et 3 (Filtrage post-agrégation/`HAVING`) sont manquantes.
+* L'explication sur l'architecture 3-tiers (Client Mobile / Serveur API / SGBD) n'a pas été abordée.
+====
+
+== Mission 4 (Cybersécurité) & Questions de synthèse
+
+[WARNING]
+.Erreur - Travaux absents
+====
+L'intégralité de la partie sécurisation est absente de votre copie :
+
+* Aucune analyse DICP ou distinction RGPD (Données personnelles vs sensibles).
+* Aucune correction des failles critiques (Injections SQL via requêtes préparées, sécurisation de l'IDOR).
+* Aucun script de base de données (création du Trigger d'audit).
+* Les 10 questions de synthèse théorique n'ont pas été traitées.
+====
+
+== Conclusion
+
+Note estimée : **08 / 20**
+
+Ce document est à l'état de brouillon inachevé (plus de 80% des questions sont ignorées). L'épreuve E5 du BTS SIO exige de la rigueur et une capacité à produire du code métier et sécurisé complet.
+
+Pour la prochaine étude de cas, je vous aiderai à démarrer le lundi et le mardi mais il faut en faire plus dans la perspective du BTS !
