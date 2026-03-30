@@ -1,0 +1,39 @@
+= TP Étude de Cas : Hackat'Innov (Version Modernisée)
+:author: Professeur Agrégé d'Informatique
+:revnumber: 1.0
+:toc: left
+:toc-title: Sommaire
+:icons: font
+:description: Préparation à l'E5 - BTS SIO SLAM 2ème année
+:imagesdir: ./images
+
+
+== Dossier A – Gestion des participants
+
+=== Mission A.1 – Évolution de la base de données pour la gestion des hackathons
+
+
+
+**Question A.1 :** Proposer une modification de la base de données utilisée par l’application existante Hackat’Orga prenant en compte les inscriptions, la gestion des équipes et le vote final.
+
+**Réponse :**
+
+* **ORGANISATEUR** (id, statut, nom, siteWeb, mel)
+** Clé primaire : id
+** _Note : statut peut prendre comme valeurs : entreprise, collectivité, association, organisme de formation, etc._
+* **MEMBRE** (id, nom, prenom, mel, telephone)
+** Clé primaire : id
+* **HACKATHON** (id, dateHeureDebut, dateHeureFin, lieu, ville, theme, affiche, objectifs)
+** Clé primaire : id
+* **ORGANISER** (idHackathon, idOrganisateur)
+** Clé primaire : idHackathon, idOrganisateur
+** Clé étrangère : idHackathon en référence à id de HACKATHON
+** Clé étrangère : idOrganisateur en référence à id de ORGANISATEUR
+* **COMPOSER** (idHackathon, idMembreJury)
+** Clé primaire : idHackathon, idMembreJury
+** Clé étrangère : idHackathon en référence à id de HACKATHON
+** Clé étrangère : idMembreJury en référence à id de MEMBRE
+* **PROJET** (id, description, retenu, idHackathon)
+** Clé primaire : id
+** Clé étrangère : idHackathon en référence à id de HACKATHON
+** _Note : retenu indique si le projet proposé a été retenu ou pas._
